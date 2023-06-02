@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>RED-DROP</title>
+        <link rel="stylesheet" type="text/css" href="./Css/gethelp.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="contact-box">
+                <div class="left"></div>
+                <div class="right">
+                    <form action="emailto:naziyaanjum220@gmail.com">
+                    <h2>Get Help</h2>
+                    <input type="text" class="field" placeholder="Your Name" id="name">
+                    <input type="text" class="field" placeholder="Your Email" id="email">
+                    <input type="text" class="field" placeholder="Phone Number" id="mob_number">
+                    <input type="text" class="field" placeholder="Blood Group" id="bloodgrp">
+                   
+
+                    <!-- <textarea placeholder="Message" class="field"></textarea> -->
+                    <button class="btn" id="button" type="button">Send</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+           
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase,set,ref } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+       
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+       const firebaseConfig = {
+        apiKey: "AIzaSyDEEIEPMYNK_vBA9u5SIZ_mFqn2H3hHfL8",
+        authDomain: "reddrop-4954f.firebaseapp.com",
+        databaseURL: "https://reddrop-4954f-default-rtdb.firebaseio.com",
+        projectId: "reddrop-4954f",
+        storageBucket: "reddrop-4954f.appspot.com",
+        messagingSenderId: "1049778764808",
+        appId: "1:1049778764808:web:5733c22593222b385065bd",
+        measurementId: "G-2MLKVYNJ7P"
+      };      
+      const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        
+      
+        // Initialize Firebase
+        
+        
+     const db=getDatabase();
+     var name=document.getElementById('name');
+       var email=document.getElementById('email');
+       var mob_number=document.getElementById('mob_number');
+       var bloodgrp =document.getElementById('bloodgrp');
+       
+         var button=document.getElementById('button');
+       
+    
+       function data(){
+        
+        set(ref(db,'HelpWanted/'+name.value),{
+            
+            name:name.value,
+            email:email.value,
+            mob_number:mob_number.value,
+           bloodgrp:bloodgrp.value,
+            
+    
+        })
+        .then(()=>{
+            alert("We Will Try To Get Back As Soon As Possible")
+        })
+      .catch(()=>{
+        alert(error)
+      })
+       }
+    button.addEventListener('click',data)
+      
+      </script>
+    
+</html>
